@@ -1,0 +1,17 @@
+version: "1.0"
+
+services:
+  telegraf_pic:
+    image: telegraf:1.35.3-alpine
+    restart: always
+    container_name: telegraf_pic
+    hostname: telegraf_pic
+    ports:
+      - 9273:9273
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+      - ./telegraf/telegraf.d/:/etc/telegraf/telegraf.d/
+    command:
+      # telegraf是執行命令
+      telegraf --config /etc/telegraf/telegraf.conf --config-directory /etc/telegraf/telegraf.d
+    
