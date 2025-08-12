@@ -14,4 +14,14 @@ services:
     command:
       # telegraf是執行命令
       telegraf --config /etc/telegraf/telegraf.conf --config-directory /etc/telegraf/telegraf.d
-    
+
+  prometheus_pic:
+    image: prom/prometheus:v3.5.0
+    restart: always
+    container_name: prometheus_pic
+    hostname: prometheus_pic
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command: --config.file=/etc/prometheus/prometheus.yml
