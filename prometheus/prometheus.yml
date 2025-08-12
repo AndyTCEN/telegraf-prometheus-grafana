@@ -16,4 +16,4 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['telegraf_pic:9273']
+      - targets: ['telegraf_1:9273','telegraf_2:9274']
